@@ -23,6 +23,7 @@
 </template>
 <script>
 import PerfilDataService from "../services/PerfilesDataService";
+import DatosDataService from "../services/DatosDataService";
 export default {
   name: "add-perfil",
   data() {
@@ -33,6 +34,7 @@ export default {
         tipo: null,
         imagen: null
       },
+      tiposPerfil: [],
       submitted: false
     };
   },
@@ -57,7 +59,25 @@ export default {
     newPerfil() {
       this.submitted = false;
       this.perfil = {};
+    },
+
+    retrieveTiposPerfil() {
+      DatosDataService.getAllTipoPerfil()
+        .then(response => {
+          this.tiposPerfil = response.data;
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+
+    loadData(){
+      this.retrieveTiposPerfil();
     }
+  },
+  mounted(){
+    this.loadData();
   }
 };
 </script>

@@ -1,20 +1,14 @@
 import http from "../http-common";
-class PerfilesDataService {
-  getAll() {
-    return http.get("/perfil/");
+class DatosDataService {
+  getAllTipoPerfil() {
+    return http.get("/datos/tipoPerfil/");
   }
-  get(id) {
-   return http.get(`/perfil/${id}`);
- }
- create(data) {
-   return http.post("/perfil/", data);
- }
- update(id, data) {
-   return http.put(`/perfil/${id}`, data);
- }
- delete(id) {
-   return http.delete(`/perfil/${id}`);
- }
+  getAllTipoLogro() {
+    return http.get("/datos/tipoLogro/");
+  }
+  getAllTipoRecompensa() {
+    return http.get("/datos/tipoRecompensa/");
+  }
 
 }
-export default new PerfilesDataService();
+export default new DatosDataService();
