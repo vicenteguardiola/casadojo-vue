@@ -1,0 +1,23 @@
+<template>
+  <div id="app">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <router-link to="/" class="navbar-brand">CasaDojo</router-link>
+      <div class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <router-link to="/perfiles" class="nav-link">Perfiles</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/perfiles/add" class="nav-link">Nuevo</router-link>
+        </li>
+      </div>
+    </nav>
+    <div class="container mt-3">
+      <router-view />
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  name: "app"
+};
+</script>
