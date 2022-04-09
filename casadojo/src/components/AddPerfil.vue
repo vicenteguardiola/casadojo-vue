@@ -2,7 +2,7 @@
   <div class="submit-form">
     <div v-if="!submitted">
       <div class="form-group">
-        <label for="title">Nombre</label>
+        <label for="nombre">Nombre</label>
         <input
           type="text"
           class="form-control"
@@ -11,6 +11,16 @@
           v-model="perfil.nombre"
           name="nombre"
         />
+
+        <label for="tipo">Tipo</label>
+        <select
+          v-model="perfil.tipo"
+          required
+          id="tipo"
+          class="form-control" >
+            <option value="" selected disabled>Escoja una opción...</option>
+            <option v-for="tipo in tiposPerfil" :value="tipo" :key="tipo">{{ tipo }}</option>
+          </select>
       </div>
       <!-- Pendiente de añadir desplegable con tipo e imagen -->
       <button @click="savePerfil" class="btn btn-success">Guardar</button>
@@ -47,7 +57,7 @@ export default {
       };
       PerfilDataService.create(data)
         .then(response => {
-          this.perfil.id = response.perfil.id;
+          this.perfil.id = response.id;
           console.log(response.data);
           this.submitted = true;
         })
