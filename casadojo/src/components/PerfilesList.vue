@@ -12,6 +12,7 @@
           {{ perfil.nombre }}
         </li>
       </ul>
+      <router-link to="/perfiles/add" class="nav-link">Nuevo</router-link>
     </div>
     <div class="col-md-6">
       <div v-if="currentPerfil">

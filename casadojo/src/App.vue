@@ -7,7 +7,10 @@
           <router-link to="/perfiles" class="nav-link">Perfiles</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/perfiles/add" class="nav-link">Nuevo</router-link>
+          <router-link to="/logros" class="nav-link">Logros</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/recompensas" class="nav-link">Recompensas</router-link>
         </li>
       </div>
     </nav>
