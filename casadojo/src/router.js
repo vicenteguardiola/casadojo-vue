@@ -23,6 +23,18 @@ const routes =  [
     path: "/recompensas/add",
     name: "recompensa-add",
     component: () => import("./components/AddRecompensa")
+  },
+
+  {
+    path: "/logros",
+    name: "logros",
+    component: () => import("./components/LogrosList")
+  },
+
+  {
+    path: "/logros/add",
+    name: "logro-add",
+    component: () => import("./components/AddLogro")
   }
 
 

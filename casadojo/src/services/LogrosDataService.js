@@ -1,5 +1,5 @@
 import http from "../http-common";
-class LogroDataService {
+class LogrosDataService {
   getAll() {
     return http.get("/logro/");
   }
