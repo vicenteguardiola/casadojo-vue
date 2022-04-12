@@ -32,6 +32,12 @@ const routes =  [
   },
 
   {
+  path: "/logros/:id",
+  name: "logro-details",
+  component: () => import("./components/Logro")
+},
+
+  {
     path: "/logros/add",
     name: "logro-add",
     component: () => import("./components/AddLogro")

@@ -22,7 +22,8 @@
         </div>
         <div>
           <label><strong>Nº Puntos:</strong></label> {{ currentLogro.numeroPuntos }}
-        </div>  
+        </div>
+        <router-link :to="'/logros/' + currentLogro.id" class="badge badge-warning">Editar</router-link>
       </div>
       <div v-else>
         <br />
