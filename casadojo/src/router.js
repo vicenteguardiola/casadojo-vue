@@ -20,6 +20,12 @@ const routes =  [
   },
 
   {
+  path: "/recompensas/:id",
+  name: "recompensa-details",
+  component: () => import("./components/Recompensa")
+  },
+
+  {
     path: "/recompensas/add",
     name: "recompensa-add",
     component: () => import("./components/AddRecompensa")
