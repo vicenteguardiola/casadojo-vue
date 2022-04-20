@@ -34,16 +34,13 @@
       </select>
     </form>
 
-    <button class="badge badge-danger mr-2"
-      @click="deleteRecompensa"
-    >
-      Borrar
-    </button>
-    <button type="submit" class="badge badge-success"
-      @click="updateRecompensa"
-    >
-      Actualizar
-    </button>
+    <button class="btn btn-secondary" @click="volver">Volver</button>
+
+    <button type="submit" class="btn btn-success" @click="updateRecompensa">Actualizar</button>
+
+    <button class="btn btn-danger mr-2" @click="deleteRecompensa">Borrar</button>
+
+
     <p>{{ message }}</p>
   </div>
   <div v-else>
@@ -94,6 +91,9 @@ export default {
         .catch(e => {
           console.log(e);
         });
+    },
+    volver(){
+      this.$router.push('/recompensas/')
     },
     retrieveTiposRecompensa() {
       DatosDataService.getAllTipoRecompensa()

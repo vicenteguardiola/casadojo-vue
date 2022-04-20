@@ -12,7 +12,9 @@
           {{ logro.nombre }}
         </li>
       </ul>
-      <router-link to="/logros/add" class="nav-link">Nuevo</router-link>
+
+      <button class="btn btn-success" @click="nuevo">Nuevo</button>
+
     </div>
     <div class="col-md-6">
       <div v-if="currentLogro">
@@ -23,7 +25,9 @@
         <div>
           <label><strong>Nº Puntos:</strong></label> {{ currentLogro.numeroPuntos }}
         </div>
-        <router-link :to="'/logros/' + currentLogro.id" class="badge badge-warning">Editar</router-link>
+
+        <button class="btn btn-success" @click="editar">Editar</button>
+
       </div>
       <div v-else>
         <br />
@@ -63,6 +67,12 @@ export default {
     setActiveLogro(logro, index) {
       this.currentLogro = logro;
       this.currentIndex = logro ? index : -1;
+    },
+    editar(){
+      this.$router.push({ path: '/logros/'+this.currentLogro.id })
+    },
+    nuevo(){
+      this.$router.push({ path: '/logros/add' })
     }
   },
   mounted() {

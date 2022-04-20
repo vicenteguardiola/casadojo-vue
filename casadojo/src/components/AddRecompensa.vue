@@ -34,10 +34,12 @@
           </select>
       </div>
       <!-- Pendiente de añadir desplegable con tipo e imagen -->
-      <button @click="saveRecompensa" class="btn btn-success">Guardar</button>
+      <button class="btn btn-secondary"  @click="volver"> Cancelar</button>
+      <button class="btn btn-success" @click="saveRecompensa">Guardar</button>
     </div>
     <div v-else>
       <h4>¡Creada correctamente!</h4>
+      <button class="btn btn-secondary"  @click="volver"> Volver</button>
       <button class="btn btn-success" @click="newRecompensa">Nuevo</button>
     </div>
   </div>
@@ -88,6 +90,9 @@ export default {
     newRecompensa() {
       this.submitted = false;
       this.recompensa = {};
+    },
+    volver(){
+      this.$router.push('/recompensas/')
     },
 
     retrieveTiposRecompensa() {

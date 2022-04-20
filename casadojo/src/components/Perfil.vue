@@ -23,16 +23,10 @@
       </select>
     </form>
 
-    <button class="badge badge-danger mr-2"
-      @click="deletePerfil"
-    >
-      Borrar
-    </button>
-    <button type="submit" class="badge badge-success"
-      @click="updatePerfil"
-    >
-      Actualizar
-    </button>
+    <button class="btn btn-secondary" @click="volver">Volver</button>
+    <button type="submit" class="btn btn-success" @click="updatePerfil">Actualizar</button>
+    <button class="btn btn-danger mr-2" @click="deletePerfil" >Borrar</button>
+    
     <p>{{ message }}</p>
   </div>
   <div v-else>
@@ -83,6 +77,9 @@ export default {
         .catch(e => {
           console.log(e);
         });
+    },
+    volver(){
+      this.$router.push('/perfiles/')
     },
     retrieveTiposPerfil() {
       DatosDataService.getAllTipoPerfil()

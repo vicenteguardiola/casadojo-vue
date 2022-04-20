@@ -23,10 +23,12 @@
           </select>
       </div>
       <!-- Pendiente de añadir desplegable con tipo e imagen -->
-      <button @click="savePerfil" class="btn btn-success">Guardar</button>
+      <button class="btn btn-secondary"  @click="volver"> Cancelar</button>
+      <button class="btn btn-success" @click="savePerfil">Guardar</button>
     </div>
     <div v-else>
       <h4>¡Creado correctamente!</h4>
+      <button class="btn btn-secondary"  @click="volver"> Volver</button>
       <button class="btn btn-success" @click="newPerfil">Nuevo</button>
     </div>
   </div>
@@ -69,6 +71,10 @@ export default {
     newPerfil() {
       this.submitted = false;
       this.perfil = {};
+    },
+
+    volver(){
+      this.$router.push('/perfiles/')
     },
 
     retrieveTiposPerfil() {

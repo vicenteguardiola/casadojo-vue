@@ -12,7 +12,7 @@
           {{ perfil.nombre }}
         </li>
       </ul>
-      <router-link to="/perfiles/add" class="nav-link">Nuevo</router-link>
+      <button class="btn btn-success" @click="nuevo">Nuevo</button>
     </div>
     <div class="col-md-6">
       <div v-if="currentPerfil">
@@ -23,7 +23,7 @@
         <div>
           <label><strong>Tipo:</strong></label> {{ currentPerfil.tipo }}
         </div>
-        <router-link :to="'/perfiles/' + currentPerfil.id" class="badge badge-warning">Editar</router-link>
+        <button class="btn btn-success" @click="editar">Editar</button>
 
       </div>
       <div v-else>
@@ -64,6 +64,12 @@ export default {
     setActivePerfil(perfil, index) {
       this.currentPerfil = perfil;
       this.currentIndex = perfil ? index : -1;
+    },
+    editar(){
+      this.$router.push({ path: '/perfiles/'+this.currentPerfil.id })
+    },
+    nuevo(){
+      this.$router.push({ path: '/perfiles/add' })
     }
   },
   mounted() {

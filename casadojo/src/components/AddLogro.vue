@@ -24,10 +24,12 @@
         />
       </div>
       <!-- Pendiente de añadir desplegable con tipo e imagen -->
-      <button @click="saveLogro" class="btn btn-success">Guardar</button>
+      <button class="btn btn-secondary"  @click="volver"> Volver</button>
+      <button class="btn btn-success" @click="saveLogro" >Guardar</button>
     </div>
     <div v-else>
       <h4>¡Creado correctamente!</h4>
+      <button class="btn btn-secondary"  @click="volver"> Volver</button>
       <button class="btn btn-success" @click="newLogro">Nuevo</button>
     </div>
   </div>
@@ -76,6 +78,10 @@ export default {
     newLogro() {
       this.submitted = false;
       this.logro = {};
+    },
+
+    volver(){
+      this.$router.push('/logros/')
     },
 
     retrieveTiposLogro() {
