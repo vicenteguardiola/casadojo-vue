@@ -23,6 +23,8 @@
         <div>
           <label><strong>Tipo:</strong></label> {{ currentPerfil.tipo }}
         </div>
+        <router-link :to="'/perfiles/' + currentPerfil.id" class="badge badge-warning">Editar</router-link>
+
       </div>
       <div v-else>
         <br />

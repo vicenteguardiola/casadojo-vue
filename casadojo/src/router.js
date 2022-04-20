@@ -8,6 +8,12 @@ const routes =  [
   },
 
   {
+  path: "/perfiles/:id",
+  name: "perfil-details",
+  component: () => import("./components/Perfil")
+  },
+
+  {
     path: "/perfiles/add",
     name: "perfil-add",
     component: () => import("./components/AddPerfil")
