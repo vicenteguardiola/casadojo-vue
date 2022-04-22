@@ -38,11 +38,19 @@
     <br />
     <p>Por favor seleccione un Logro...</p>
   </div>
+
+  <confirm-dialogue ref="confirmDialogue"></confirm-dialogue>
+
+
 </template>
 <script>
 import LogrosDataService from "../services/LogrosDataService";
+import ConfirmDialogue from '../components/ConfirmDialogue.vue'
+
 export default {
   name: "logro-detail",
+  components: { ConfirmDialogue },
+
   data() {
     return {
       currentLogro: null,
@@ -70,7 +78,18 @@ export default {
           console.log(e);
         });
     },
-    deleteLogro() {
+    async deleteLogro(){
+      const ok = await this.$refs.confirmDialogue.show({
+          title: 'Elimiar Logro',
+          message: '¿Estás seguro que deseas eliminar el logro seleccionado?',
+          okButton: 'Borrar',
+      })
+        if (ok) {
+          this.doDeleteLogro();
+        }
+
+    },
+    doDeleteLogro() {
       LogrosDataService.delete(this.currentLogro.id)
         .then(response => {
           console.log(response.data);

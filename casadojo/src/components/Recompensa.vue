@@ -47,13 +47,20 @@
     <br />
     <p>Por favor seleccione una Recompensa...</p>
   </div>
+
+  <confirm-dialogue ref="confirmDialogue"></confirm-dialogue>
+
 </template>
 <script>
 import RecompensasDataService from "../services/RecompensasDataService";
 import DatosDataService from "../services/DatosDataService";
+import ConfirmDialogue from '../components/ConfirmDialogue.vue'
+
 
 export default {
   name: "recompensa-detail",
+  components: { ConfirmDialogue },
+
   data() {
     return {
       currentRecompensa: null,
@@ -82,7 +89,18 @@ export default {
           console.log(e);
         });
     },
-    deleteRecompensa() {
+    async deleteRecompensa(){
+      const ok = await this.$refs.confirmDialogue.show({
+          title: 'Elimiar Logro',
+          message: '¿Estás seguro que deseas eliminar la recompensa seleccionado?',
+          okButton: 'Borrar',
+      })
+        if (ok) {
+          this.doDeleteRecompensa();
+        }
+
+    },
+    doDeleteRecompensa() {
       RecompensasDataService.delete(this.currentRecompensa.id)
         .then(response => {
           console.log(response.data);

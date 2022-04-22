@@ -26,20 +26,25 @@
     <button class="btn btn-secondary" @click="volver">Volver</button>
     <button type="submit" class="btn btn-success" @click="updatePerfil">Actualizar</button>
     <button class="btn btn-danger mr-2" @click="deletePerfil" >Borrar</button>
-    
+
     <p>{{ message }}</p>
   </div>
   <div v-else>
     <br />
     <p>Por favor seleccione un Perfil...</p>
   </div>
+
+  <confirm-dialogue ref="confirmDialogue"></confirm-dialogue>
+
 </template>
 <script>
 import PerfilesDataService from "../services/PerfilesDataService";
 import DatosDataService from "../services/DatosDataService";
+import ConfirmDialogue from '../components/ConfirmDialogue.vue'
 
 export default {
   name: "perfil-detail",
+  components: { ConfirmDialogue },
   data() {
     return {
       currentPerfil: null,
@@ -68,7 +73,17 @@ export default {
           console.log(e);
         });
     },
-    deletePerfil() {
+    async deletePerfil() {
+            const ok = await this.$refs.confirmDialogue.show({
+                title: 'Eliminar Perfil',
+                message: '¿Estás seguro que deseas eliminar el perfil seleccionado?',
+                okButton: 'Borrar',
+            })
+            if (ok) {
+              this.deletePerfil();
+            }
+        },
+  doDeletePerfil(){
       PerfilesDataService.delete(this.currentPerfil.id)
         .then(response => {
           console.log(response.data);
