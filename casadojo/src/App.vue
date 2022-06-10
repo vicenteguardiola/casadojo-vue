@@ -1,26 +1,69 @@
 <template>
-  <div id="app">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <router-link to="/" class="navbar-brand">CasaDojo</router-link>
-      <div class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <router-link to="/perfiles" class="nav-link">Perfiles</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/logros" class="nav-link">Logros</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/recompensas" class="nav-link">Recompensas</router-link>
-        </li>
-      </div>
-    </nav>
-    <div class="container mt-3">
-      <router-view />
-    </div>
-  </div>
+  <v-app>
+    <v-app-bar app color="primary" dark>
+      <v-toolbar-title>CasaDojo</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn
+        v-for="link in links"
+        :key="`${link.label}-header-link`"        
+        :to="link.url"
+        rounded="">
+        {{ link.label }}
+      </v-btn>
+    </v-app-bar>
+
+  <v-main>
+        <v-container fluid>
+          <router-view />
+        </v-container>
+  </v-main>
+
+    <v-footer 
+      color="primary lighten-1"
+      padless>
+
+        <v-row
+          justify="center"
+          no-gutters
+        >
+          <v-btn
+            v-for="link in links"
+            :key="`${link.label}-footer-link`"
+            :to="link.url"
+            rounded>
+            {{ link.label }}
+          </v-btn>
+
+        
+
+      </v-row>
+    </v-footer>
+  </v-app>
 </template>
 <script>
 export default {
-  name: "app"
+  name: "app",
+  data(){
+    return{
+      links:[
+        {
+           label:'Inicio',
+           url:'/'
+        },
+        {
+           label:'Perfiles',
+           url:'/perfiles'
+        },
+        {
+           label:'Logros',
+           url:'/logros'
+        },
+        {
+           label:'Recompensas',
+           url:'/recompensas'
+        }
+      ]
+    }
+  }
 };
 </script>
